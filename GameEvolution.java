@@ -5,7 +5,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class GameEvolution {
-    public static int size = GameOfLife.size;
+
+    public static int size;
 
     public static List<Character> getNeighbors(char[][] matrix, int x, int y) {
         List<Character> neighbors = new ArrayList<>();
@@ -17,12 +18,9 @@ public class GameEvolution {
                 if (j == x && i == y) {
                     continue;
                 }
-
                 neighbors.add(matrix[adjustedY][adjustedX]);
-
             }
         }
-        //System.out.println(neighbors.toString());
         return neighbors;
     }
 
@@ -47,15 +45,15 @@ public class GameEvolution {
     }
 
     public static int countAliveNeighbors(List<Character> neighbors) {
-        int count = Collections.frequency(neighbors, 'O');
-        //System.out.println("#of alive neighbors: " + count);
-        return count;
+        return Collections.frequency(neighbors, 'O');
     }
+
+
     public static int getAliveCells(char[][] matrix) {
         int count = 0;
-        for (int i = 0; i < matrix.length; i++) {
+        for (char[] chars : matrix) {
             for (int j = 0; j < matrix[0].length; j++) {
-                if (matrix[i][j] == 'O') {
+                if (chars[j] == 'O') {
                     count++;
                 }
             }
@@ -63,5 +61,8 @@ public class GameEvolution {
         return count;
     }
 
+    public static void setSize(int newSize) {
+        size = newSize;
+    }
 
 }

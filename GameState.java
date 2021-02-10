@@ -1,18 +1,20 @@
 package life;
 
 public class GameState {
-    public static int generationCount;
+    public int generationCount;
     public int aliveCells;
+    char[][] originalGeneration;
+    char[][] nextGeneration;
+    public int generationsLeft;
 
     public int getAliveCells() {
         return aliveCells;
     }
 
-    char[][] originalGeneration;
-    char[][] nextGeneration;
 
-    public static void setGenerationCount(int generationCount) {
-        GameState.generationCount = generationCount;
+
+    public void setGenerationCount(int newGenerationCount) {
+        this.generationCount = newGenerationCount;
     }
 
     public void setAliveCells(int aliveCells) {
@@ -31,9 +33,11 @@ public class GameState {
 
     }
 
-    public static int getGenerationCount() {
-        return generationCount;
+    public int getGenerationCount() {
+        return this.generationCount;
     }
+
+
 
     public char[][] getOriginalGeneration() {
         return originalGeneration;
